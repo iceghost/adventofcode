@@ -35,8 +35,14 @@ pub fn day3() {
                 }
             });
     }
-    let result1: String = arr.iter().map(|counter| if counter.0 < counter.1 { '0' } else { '1' }).collect();
-    let result2: String = arr.iter().map(|counter| if counter.0 > counter.1 { '0' } else { '1' }).collect();
+    let result1: String = arr
+        .iter()
+        .map(|counter| if counter.0 < counter.1 { '0' } else { '1' })
+        .collect();
+    let result2: String = arr
+        .iter()
+        .map(|counter| if counter.0 > counter.1 { '0' } else { '1' })
+        .collect();
     // println!("{}", result1);
     // println!("{}", result2);
     let dec1 = u64::from_str_radix(&result1, 2).unwrap();

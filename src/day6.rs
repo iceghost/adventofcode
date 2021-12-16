@@ -1,6 +1,6 @@
-use std::iter::Iterator;
 use std::fs::*;
 use std::io::*;
+use std::iter::Iterator;
 
 struct SizeCache(Vec<usize>);
 
@@ -14,7 +14,8 @@ impl SizeCache {
         // normalize
         *index += 8;
         while *index as usize >= self.0.len() {
-            self.0.push(self.0[*index as usize - 7] + self.0[*index as usize - 9]);
+            self.0
+                .push(self.0[*index as usize - 7] + self.0[*index as usize - 9]);
         }
         self.0[*index as usize]
     }
@@ -28,7 +29,11 @@ struct LanternfishSchool {
 
 impl LanternfishSchool {
     fn new(data: Vec<u8>) -> Self {
-        Self { data, day: 0, sizeCache : SizeCache::new() }
+        Self {
+            data,
+            day: 0,
+            sizeCache: SizeCache::new(),
+        }
     }
 }
 
@@ -38,7 +43,9 @@ impl Iterator for LanternfishSchool {
     fn next(&mut self) -> Option<Self::Item> {
         let mut size = 0;
         for fish in &self.data {
-            size += self.sizeCache.get(&mut (self.day as isize - *fish as isize));
+            size += self
+                .sizeCache
+                .get(&mut (self.day as isize - *fish as isize));
         }
         self.day += 1;
         Some(size)
