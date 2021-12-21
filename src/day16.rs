@@ -148,6 +148,7 @@ pub fn part2(raw: &str) -> usize {
     parse_packet(&mut raw.chars()).evaluate()
 }
 
+
 pub fn day16() {
     let raw = std::fs::read_to_string("./inputs/day16.txt").unwrap();
     println!("{}", part1(&raw));
@@ -168,5 +169,7 @@ mod test {
         assert_eq!(part1("1100000000000001010100000000000000000001011000010001010110100010111000001000000000101111000110000010001101000000"), 23);
         assert_eq!(part1("101000000000000101101100100010000000000101100010000000010111110000110110100001101011000110001010001111010100011110000000"), 31);
     }
-    fn test_part2() {}
+    fn test_part2() {
+
+    }
 }
